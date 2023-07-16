@@ -45,29 +45,6 @@ app.put('/products/:id',async (req,res)=>{
 app.delete('/products/:id',async(req,res)=>{
   await Products.findByIdAndDelete(req.params.id)
 })
-// app.put ('/products',async(req,res)=>{
-//   const data= await Products.find()
-//   if (data) res.json(data)
-// })
-// const usersList= [
-//     {id:2,name:'hari',age:32},
-//     {id:5,name:'shyam',age:33},
-//     {id:9,name:'gopal',age:13},
-//     {id:3,name:'chris',age:41},
-// ]
-
-// app.get('/users', (req, res) => {
-//     //age < 30  
-//     const onlyAgeArr = usersList.filter(item=>{
-//         if(item.age <30 ){
-//             return item
-//         }
-//     })
-//     res.json({
-//         users:onlyAgeArr
-//     })
-// })
-
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
