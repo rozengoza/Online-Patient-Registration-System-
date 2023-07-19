@@ -3,6 +3,8 @@
 - [ ] Easy Appointment in Desired Department
 - [ ] Flexible Timing
 - [ ] Easy Processing of Forms by Admins
+- [ ] Easy Bill Payments
+- [ ] Notifications about Follow Ups
 ## Roadmap
 
 ## First Phase 
