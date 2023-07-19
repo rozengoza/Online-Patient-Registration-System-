@@ -5,7 +5,8 @@
 - [ ] Easy Processing of Forms by Admins
 - [ ] Easy Bill Payments
 - [ ] Notifications about Follow Ups
-## Roadmap
+- [ ] Information About Services Provided By Hospital
+- [ ] Information About Health Professionals
 
 ## First Phase 
 - [ ] Login
