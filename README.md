@@ -1,4 +1,7 @@
-## Features
+## Online Patient Registration Web Services
+With increase in need of Health Care facility, patients are compelled to waste some of their time in waiting phase. This project targets to make Health Services easily accesible to the needy patients, allowing them to register and book appointments at a available time according to their convinience.
+
+## Features to be Included
 - [ ] National Health Insurance Services
 - [ ] Easy Appointment in Desired Department
 - [ ] Flexible Timing
@@ -10,9 +13,9 @@
 - [ ] Medical History of Patients
 
 ## Working On/ Work Completed For
-- [ ] Server and Client initial code added
-- [ ] REST API implemented for registering users and reading their Details from database
-- [ ] Local MongoDB database implemented
+- [x] Server and Client initial code added
+- [x] REST API implemented for registering users and reading their Details from database
+- [x] Local MongoDB database implemented
 - [ ] Login Register pages created, Register Form data updated into Database
 
 ## First Phase 
