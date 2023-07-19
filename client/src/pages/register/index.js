@@ -57,8 +57,11 @@ export const RegisterSchema = () => (
       validationSchema={SignupSchema}
       onSubmit={async values => {
         // same shape as initial values
-        alert(JSON.stringify(values))
-        console.log(values);
+        //Perform REST operation to remove confirmPassword being pushed
+        const {confirmPassword, ...allOtherItems}=values 
+        alert(JSON.stringify(allOtherItems))
+        console.log(allOtherItems);
+
         
         try{
           await fetch('http://localhost:4000/register',{
@@ -66,7 +69,7 @@ export const RegisterSchema = () => (
             headers:{
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(values),
+            body: JSON.stringify(allOtherItems),
           })
           console.log("User Registered Successfully")
         }
