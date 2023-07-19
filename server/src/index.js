@@ -35,6 +35,7 @@ catch(err){
 })
 
 app.get ('/register',async(req,res)=>{
+  console.log(hello)
   const data= await Users.find()
   if (data) res.json(data)
   
