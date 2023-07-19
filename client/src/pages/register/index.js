@@ -114,7 +114,7 @@ export const RegisterSchema = () => (
           ) : null}<br/>
 
           <button type="submit">Register</button>
-          <p>Don't have an account yet? <Link href='/login'>Login</Link> instead.</p>
+          <p>Already have an account? <Link href='/login'>Login</Link> </p>
           
         </Form>
       )}
