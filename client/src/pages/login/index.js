@@ -2,7 +2,9 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link'
-// import Header from '../../components/Header'
+import Header from '../../components/Header'
+import Image from 'next/image'
+import Banner from '../../../public/banner.png'
 // import Footer from '../../components/Footer'
 const Login = () => {
     const LoginSchema = Yup.object().shape({
@@ -20,7 +22,7 @@ const Login = () => {
     });
     return(
         <>
-        {/* <Header/> */}
+        <Header/>
       <div className='container'> 
       <div className="loginForm">
         <h2>Please Login</h2>

@@ -2,47 +2,58 @@ import React from 'react'
 import Link from 'next/link'
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import Header from '../../components/Header'
+import Image from 'next/image'
+import Banner from '../../../public/banner.png'
 
-const SignupSchema = Yup.object().shape({
-  fullName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  phoneNumber: Yup.number()
-    .min(10,"Too Short!")
-    .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string()
-  .required("Please enter a password")
-  // check minimum characters
-  .min(8, "Password must have at least 8 characters")
-  // different error messages for different requirements
-  .matches(/[0-9]/, "Password must include a digit!")
-  .matches(/[a-z]/,"Password must include a lowercase character!")
-  .matches(/[A-Z]/, "Password must include a uppercase character!"),
-  confirmPassword: Yup.string()
-  .required("Please enter a password")
-  // check minimum characters
-  .min(8, "Password must have at least 8 characters")
-  // different error messages for different requirements
-  .matches(/[0-9]/, "Password must include a digit!")
-  .matches(/[a-z]/,"Password must include a lowercase character!")
-  .matches(/[A-Z]/, "Password must include a uppercase character!")
-  .oneOf([Yup.ref('password'), null], 'Passwords must match'),
-  mode: Yup.string()
-  .required('Required!'),
-  age: Yup.number()
-  .required('Required!'),
-  gender: Yup.string()
-  .required('Required!'),
-  city: Yup.string()
-  .required('Required!'),
+const Register = () => {
+  const SignupSchema = Yup.object().shape({
+    fullName: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    phoneNumber: Yup.number()
+      .min(10,"Too Short!")
+      .required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string()
+    .required("Please enter a password")
+    // check minimum characters
+    .min(8, "Password must have at least 8 characters")
+    // different error messages for different requirements
+    .matches(/[0-9]/, "Password must include a digit!")
+    .matches(/[a-z]/,"Password must include a lowercase character!")
+    .matches(/[A-Z]/, "Password must include a uppercase character!"),
+    confirmPassword: Yup.string()
+    .required("Please enter a password")
+    // check minimum characters
+    .min(8, "Password must have at least 8 characters")
+    // different error messages for different requirements
+    .matches(/[0-9]/, "Password must include a digit!")
+    .matches(/[a-z]/,"Password must include a lowercase character!")
+    .matches(/[A-Z]/, "Password must include a uppercase character!")
+    .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+    mode: Yup.string()
+    .required('Required!'),
+    age: Yup.number()
+    .required('Required!'),
+    gender: Yup.string()
+    .required('Required!'),
+    city: Yup.string()
+    .required('Required!'),
 
 });
+return(
+  <>
+  <Header/>
+<div className='container'> 
+<div className='banner'>
+<a href='/'><Image src={Banner} alt="Picture of the author"/></a>
+</div>
 
-export const RegisterSchema = () => (
   <div className="signupForm">
-    <h1>Signup</h1>
+    
+    <h1 id="signupText">Create Your Account.</h1>
     <Formik
       initialValues={{
         fullName: '',
@@ -117,16 +128,19 @@ export const RegisterSchema = () => (
           ) : null}<br/>
 
           <button type="submit">Register</button>
-          <p>Already have an account? <Link href='/login'>Login</Link> </p>
           
         </Form>
       )}
     </Formik>
+      <p>Already have an account? <Link href='/login'>Login</Link> </p>
   </div>
+  </div>
+  </>
 );
+}
 
 
-export default RegisterSchema
+export default Register
 // export default Login
 
 // frontend bata kasari  data pathaune 
