@@ -3,3 +3,115 @@
   background-color:blue;
   color:black;
 }
+/* HEADER CSS STARTS */
+header{
+  background-color: #5ecd63;
+  /* #5ecd63 */
+  padding: 10px 0;
+  color:#fff;
+  /* position: fixed; */
+  top: 0;
+  width: 100%;
+  height:80px;
+}
+nav{
+  display: flex;
+}
+.logo{
+  display: flex;
+  width:250px;
+  height:80px;
+  padding-left:8px;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+}
+.logo img{
+  max-width: 250px;
+  height: 80px;
+  border-radius:5px;
+}
+
+ul.nav-menus{
+  display:flex;
+  padding-left:40px;
+  justify-self:flex-end;
+  padding-right:40px;
+  padding-top:10px;
+  flex: 0 0 auto;
+  list-style:none;
+  margin-bottom:0;
+}
+ul.nav-menus li{
+  display:flex;
+  justify-content:center;
+  padding: 0 50px;
+  margin-bottom:0;
+}
+ul.nav-menus li a{
+  color:#fff;
+  text-decoration:none;
+  border-radius:5px;
+  
+}
+ul.nav-menus li a.active,
+ul.nav-menus li a:hover{
+  background-color:white;
+  color:black;
+  border-radius:5px;
+  height:20px;
+  margin-bottom:0;
+  opacity:0.9;
+}
+
+/* HEADER CSS ENDS */ 
+/* Register Form CSS starts */
+.banner{
+  display:flex;
+  width:100%
+}
+.signupForm{
+  border-radius:10px;
+  background-color:aliceblue;
+  width:350px;
+  height:fit-content;
+  margin-top:-400px;
+  align-items:center;
+  margin-left:60%;
+  display:flex;
+  flex-flow:column;
+  align-items :center;
+}
+
+#signupText{
+  font-style: normal;
+  font-weight:200;
+  font-weight:200;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  color:#5ecd63;
+  background-color:white;
+  border-radius:5px;
+  box-shadow: black;
+  text-shadow:black;
+}
+
+/* Styling the input fields */
+input[name="fullName"],
+input[name="phoneNumber"],
+input[name="email"],
+input[name="password"],
+input[name="confirmPassword"],
+input[name="mode"],
+input[name="age"],
+input[name="gender"],
+input[name="city"] {
+  /* Add your desired styles here */
+  width: 300px;
+  height:fit-content;
+  padding: 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow:black;
+  border-width:1px;
+  border-color:black;
+  margin-bottom: 10px;
+}
