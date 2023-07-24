@@ -1,11 +1,7 @@
-.nav{
-  height:100px;
-  background-color:blue;
-  color:black;
-}
+
 /* HEADER CSS STARTS */
 header{
-  background-color: #5ecd63;
+  background-color:#3a97a7;
   /* #5ecd63 */
   padding: 10px 0;
   color:#fff;
@@ -69,7 +65,7 @@ ul.nav-menus li a:hover{
   display:flex;
   width:100%
 }
-.signupForm{
+.signupForm,.loginForm{
   border-radius:10px;
   background-color:aliceblue;
   width:350px;
@@ -82,7 +78,7 @@ ul.nav-menus li a:hover{
   align-items :center;
 }
 
-#signupText{
+#signupText, #loginText{
   font-style: normal;
   font-weight:200;
   font-weight:200;
@@ -90,7 +86,7 @@ ul.nav-menus li a:hover{
   color:#5ecd63;
   background-color:white;
   border-radius:5px;
-  box-shadow: black;
+  box-shadow: rgb(0, 0, 0);
   text-shadow:black;
 }
 
@@ -114,4 +110,60 @@ input[name="city"] {
   border-width:1px;
   border-color:black;
   margin-bottom: 10px;
+}
+
+/* Register button CSS */
+#register-btn, #login-btn{
+  align-self:center;
+  background-color:#5ecd63;
+  color:white;
+  border-radius:5px;
+  box-shadow:white;
+  border:white;
+  display:flex;
+  margin-left:40%;
+}
+
+#register-btn:hover,#login-btn:hover{
+  
+  background-color:white;
+  color:#5ecd63;
+}
+
+/* footer css */
+
+footer {
+  /* position:sticky;
+  bottom: 0; */
+  background-color: white;
+  color: #5ecd63;
+  padding: 40px 0;
+  text-align: center;
+  width: 100%;
+  margin: 10px 5px;
+}
+
+/* about Us section styling */
+.container-aboutUs{
+display:flex;
+flex-direction:horizontal;
+}
+.aboutUs{
+  background-color:aliceblue;
+  width:100%;
+  height:fit-content;
+  margin-right:10%;
+  margin-top:8%;
+}
+#aboutUs-header{
+  color:#5ecd63;
+  font-family: 'Times New Roman', Times, serif;
+  font-size:30px;
+  margin-top:10px;
+}
+#aboutUs-text{
+  color:rgb(79, 79, 79);
+  font-family: 'Times New Roman', Times, serif;
+  font-stretch: wider;
+  margin-top:5px;
 }

@@ -2,11 +2,16 @@ import React from 'react'
 import Link from 'next/link'
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { useRouter } from 'next/navigation'
 import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 import Image from 'next/image'
 import Banner from '../../../public/banner.png'
+import { Button, message } from 'antd';
 
 const Register = () => {
+  const router =useRouter()
+  const [msg, contextHolder] = message.useMessage(); 
   const SignupSchema = Yup.object().shape({
     fullName: Yup.string()
       .min(2, 'Too Short!')
@@ -45,13 +50,14 @@ const Register = () => {
 });
 return(
   <>
+  {contextHolder}
   <Header/>
 <div className='container'> 
 <div className='banner'>
 <a href='/'><Image src={Banner} alt="Picture of the author"/></a>
 </div>
 
-  <div className="signupForm">
+  <div className='signupForm'>
     
     <h1 id="signupText">Create Your Account.</h1>
     <Formik
@@ -69,20 +75,24 @@ return(
       onSubmit={async values => {
         // same shape as initial values
         //Perform REST operation to remove confirmPassword being pushed
-        const {confirmPassword, ...allOtherItems}=values 
-        alert(JSON.stringify(allOtherItems))
-        console.log(allOtherItems);
-
+        const {confirmPassword, ...formFields}=values 
+        // alert(JSON.stringify(allOtherItems))
+        // console.log(allOtherItems);
+        const requestOptions= {
+          method:'POST',
+          headers:{
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formFields),
+        }
+        // alert("Your account has been created successfully.")
+        
         
         try{
-          await fetch('http://localhost:4000/register',{
-            method:'POST',
-            headers:{
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(allOtherItems),
-          })
+         const data = await fetch('http://localhost:4000/register',requestOptions)
           console.log("User Registered Successfully")
+          msg.info('Your account has been created successfully.')
+          router.push('./login')
         }
         catch(err){
           console.log("User Registration Failed")
@@ -127,7 +137,7 @@ return(
             <div>{errors.city}</div>
           ) : null}<br/>
 
-          <button type="submit">Register</button>
+          <button id="register-btn" type="submit">Register</button>
           
         </Form>
       )}
@@ -135,6 +145,7 @@ return(
       <p>Already have an account? <Link href='/login'>Login</Link> </p>
   </div>
   </div>
+  <Footer/>
   </>
 );
 }
