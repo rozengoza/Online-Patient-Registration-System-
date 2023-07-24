@@ -8,6 +8,8 @@ const app=express()
 app.use(express.json())
 const cors=require('cors');
 app.use(cors());
+const userRoute=require('./routes/users')
+app.use("/",userRoute)
 //body readable format hudaina. tesaile express ko  body lai  Json banaideko 
 //import react from 'react'; // es6 import method 
 // const port = process.env.PORT
@@ -17,27 +19,16 @@ app.use(cors());
 //mongoose schema
 
 
-app.post ('/register',async (req,res)=>{
-  // console.log(req.body)
-  try{
-    Users.create(req.body)
-  res.json({
-    msg:"User has been added successfully."
-  })
-}
-catch(err){
-  res.json({
-    msg:"User Registration failed."
-  })
-  console.log("User Registration failed.")
-}
 
-})
 
 app.get ('/register',async(req,res)=>{
   console.log(hello)
   const data= await Users.find()
   if (data) res.json(data)
+  
+})
+app.get ('/aboutUs',async(req,res)=>{
+  console.log(hello)
   
 })
 
@@ -58,7 +49,6 @@ catch(err){
   })
   console.log("User deletion failed.")
 }
-
 })
 
 app.use(cors({

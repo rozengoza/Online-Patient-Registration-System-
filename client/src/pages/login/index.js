@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Header from '../../components/Header'
 import Image from 'next/image'
 import Banner from '../../../public/banner.png'
-// import Footer from '../../components/Footer'
+import Footer from '../../components/Footer'
 const Login = () => {
     const LoginSchema = Yup.object().shape({
         phoneNumber: Yup.number()
@@ -24,15 +24,18 @@ const Login = () => {
         <>
         <Header/>
       <div className='container'> 
+      <div className='banner'>
+      <a href='/'><Image src={Banner} alt="Picture of the author"/></a>
+      </div>
       <div className="loginForm">
-        <h2>Please Login</h2>
+        <h2 id="loginText">Sign in into Your Account.</h2>
         <Formik
          initialValues={{
             phoneNumber: '',
            password:''
          }}
          validationSchema={LoginSchema}
-         onSubmit={values => {
+         onSubmit={async values => {
            // same shape as initial values
            alert(JSON.stringify(values))
            console.log(values);
@@ -48,14 +51,14 @@ const Login = () => {
           {errors.password && touched.password ? (
             <div>{errors.password}</div>
           ) : null}<br/>
-             <button type="submit">Login</button>
+             <button id="login-btn" type="submit">Login</button>
            </Form>
          )}
        </Formik>
         <p>Don't have an account? <Link href="/register">Sign up</Link></p>
       </div>
       </div>
-      {/* <Footer/> */}
+      <Footer/>
       </>
     )
   }
