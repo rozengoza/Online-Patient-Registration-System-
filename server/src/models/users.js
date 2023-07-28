@@ -1,8 +1,8 @@
 const mongoose =require('mongoose')
 const { Schema } = mongoose;
 const userSchema = new Schema({
-    fullName: String, // String is shorthand for {type: String}
-    phoneNumber: Number,
+    fullName: {type:String, required:true}, // String is shorthand for {type: String}
+    phoneNumber: {type:Number, required:true},
     email: String,
     password: String,
     confirmPassword: String,
