@@ -48,6 +48,49 @@ const Register = () => {
     .required('Required!'),
 
 });
+
+const handleRegister = async(values)=>{
+// same shape as initial values
+        //Perform REST operation to remove confirmPassword being pushed
+        const {confirmPassword, ...formFields}=values 
+        // alert(JSON.stringify(allOtherItems))
+        // console.log(allOtherItems);
+        const requestOptions= {
+          method:'POST',
+          headers:{
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formFields),
+        };
+        try{
+          const res = await fetch('http://localhost:4000/register',requestOptions)
+          const data = await res.json()
+          if(data && res.status==200) {
+           console.log("User Registered Successfully")
+           msg.info('Your account has been created successfully.')
+           router.push('./login')
+           setTimeout(() => {
+            msg.info(data.msg);
+          }, 2000);
+         }
+         else{
+          msg.info(res.statusText);
+         }
+        }
+         catch(err){
+           console.log("User Registration Failed")
+         }
+
+}
+const handlePhoneValidation= async (e)=>{
+  if(e.target.value.length==10){
+  const res = await fetch('http://localhost:4000/phoneNumber-availabe/'+e.target.value)
+  const data = await res.json()
+  if(data.validPhoneNumber){
+    alert("An account for the entered phone number already exists")
+  }
+}
+}
 return(
   <>
   {contextHolder}
@@ -73,40 +116,17 @@ return(
       }}
       validationSchema={SignupSchema}
       onSubmit={async values => {
-        // same shape as initial values
-        //Perform REST operation to remove confirmPassword being pushed
-        const {confirmPassword, ...formFields}=values 
-        // alert(JSON.stringify(allOtherItems))
-        // console.log(allOtherItems);
-        const requestOptions= {
-          method:'POST',
-          headers:{
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formFields),
-        }
-        // alert("Your account has been created successfully.")
-        
-        
-        try{
-         const data = await fetch('http://localhost:4000/register',requestOptions)
-          console.log("User Registered Successfully")
-          msg.info('Your account has been created successfully.')
-          router.push('./login')
-        }
-        catch(err){
-          console.log("User Registration Failed")
-        }
+        handleRegister(values)
       }}
 
     >
-      {({ errors, touched }) => (
+      {({ errors, touched ,values}) => (
         <Form>
           <Field name="fullName" placeholder="Full Name" />
           {errors.fullName && touched.fullName ? (
             <div>{errors.fullName}</div>
           ) : null}<br/>
-          <Field name="phoneNumber" placeholder="Phone Number"/>
+          <Field name="phoneNumber"  placeholder="Phone Number"/>
           {errors.phoneNumber && touched.phoneNumber ? (
             <div>{errors.phoneNumber}</div>
           ) : null}<br/>
