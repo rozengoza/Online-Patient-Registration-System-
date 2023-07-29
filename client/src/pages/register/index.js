@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/navigation'
+import {useSelector} from 'react-redux'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Image from 'next/image'
