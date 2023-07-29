@@ -1,8 +1,13 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const Users = require('../models/users')
+const jwt = require('jsonwebtoken')
+const cookie = require('cookie')
 // const token = jwt.sign({ phoneNumber:req.body.phoneNumber}, process.env.SECRET_KEY);
 // require('crypto').randomBytes(64).toString('hex')
+
+
+
 const registerUser=async (req,res)=>{
   // check if user already exists
 try{
@@ -14,11 +19,19 @@ try{
     })
   }else{
     req.body.password = await bcrypt.hash(req.body.password, saltRounds)
-      await Users.create(req.body)     
+    const token = jwt.sign({ phoneNumber:req.body.phoneNumber},process.env.SECRET_KEY);
+    const info = await Users.create(req.body) 
+    if(info){
+      const {password, ...otherFields}  = info._doc
+      console.log(otherFields)
     res.json({
       msg:"User has been added successfully.",
-      success:true
+      success:true,
+      token:token,
+      userDetails:otherFields,
+
     })
+  }
 
   }
 }
@@ -29,8 +42,22 @@ try{
     })
     console.log("User Registration failed.")
   }
+  }
 
+
+  // Setup cookie 
+
+  const handleCookie=()=>{
+    const secureCookie = true;
+    const httpOnlyCookie = true;
+    const cookieOptions = {
+      secure: secureCookie,
+      httpOnly: httpOnlyCookie,
+    };
+    const cookieString = cookie.serialize('jwtToken', token, cookieOptions);
   
+    // Set the cookie in the response header
+    res.setHeader('Set-Cookie', cookieString);
   }
 
 
