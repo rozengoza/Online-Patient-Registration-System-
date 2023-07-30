@@ -10,7 +10,7 @@ import Image from 'next/image'
 import Banner from '../../../public/banner.png'
 import { Button, message } from 'antd';
 // redux code
-import { setUserDetails } from '@/redux/reducerSlice/usersSlice'
+import { setUserDetails } from '../../redux/reducerSlice/usersSlice'
 import { useDispatch} from 'react-redux'
 
 
