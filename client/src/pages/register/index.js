@@ -9,9 +9,14 @@ import Footer from '../../components/Footer'
 import Image from 'next/image'
 import Banner from '../../../public/banner.png'
 import { Button, message } from 'antd';
+// redux code
+import { setUserDetails } from '@/redux/reducerSlice/usersSlice'
+import { useDispatch} from 'react-redux'
+
 
 const Register = () => {
   const router =useRouter()
+  const dispatch = useDispatch()
   const [msg, contextHolder] = message.useMessage(); 
   const SignupSchema = Yup.object().shape({
     fullName: Yup.string()
@@ -67,7 +72,10 @@ const handleRegister = async(values)=>{
           const res = await fetch('http://localhost:4000/register',requestOptions)
           const data = await res.json()
           if(data && res.status==200) {
-           console.log("User Registered Successfully")
+            debugger;
+            dispatch(setUserDetails(data))
+            // alert(JSON.stringify(data))
+          console.log("User Registered Successfully")
            msg.info('Your account has been created successfully.')
            router.push('./login')
            setTimeout(() => {

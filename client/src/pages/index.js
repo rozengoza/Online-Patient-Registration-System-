@@ -1,18 +1,28 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
+import Home from './home/index'
+import NavBar from '../components/Header'
 
-function Home() {
+const UnAuthenticatedPages =() => {
   // const  {fullName} = useSelector(state=>state.users)
-  return (
-    <div>
-      <div className='nav'>
-      Welcome to Easy Health Service Registration 
-      {/* {fullName} */}
-      </div>
-      
-      
-      </div>
-  )
+  return <Login/>
 }
 
-export default Home
+ const AuthenticatedPages =() =>{
+  return(
+  <> <NavBar/>
+    <Home/>
+  </>
+  )
+ }
+
+ const index = () =>{
+return(
+  <div>
+  <AuthenticatedPages/>
+  </div>
+)
+ }
+ 
+
+// export default 
