@@ -7,6 +7,7 @@ With increase in need of Health Care facility, patients are compelled to waste s
 - [ ] Next.js
 - [ ] Node.js
 - [ ] MongoDB
+- [ ] Redux
 
 ## Features to be Included
 - [ ] National Health Insurance Services
@@ -23,7 +24,8 @@ With increase in need of Health Care facility, patients are compelled to waste s
 - [x] Server and Client initial code added
 - [x] REST API implemented for registering users and reading their Details from database
 - [x] Local MongoDB database implemented
-- [ ] Login Register pages created, Register Form data updated into Database
+- [x] Login Register pages created, Register Form data updated into Database
+- [ ] Redux code added at client side
 
 ## First Phase 
 - [ ] Login
